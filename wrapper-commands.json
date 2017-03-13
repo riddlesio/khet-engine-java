@@ -1,0 +1,19 @@
+{
+  "wrapper": {
+    "timebankMax": 10000,
+    "timePerMove": 100,
+    "maxTimeouts": 0,
+    "resultFile": "./resultfile.json",
+    "debug": true
+  },
+  "match": {
+    "bots": [{
+      "command": "java -cp /home/jim/workspace/khet-starterbot-java/build/classes/main bot.BotStarter"
+    },{
+      "command": "java -cp /home/jim/workspace/khet-starterbot-java/build/classes/main bot.BotStarter"
+    }],
+    "engine": {
+      "command": "java -jar /home/jim/workspace/khet/build/libs/khet-1.0.0.jar"
+    }
+  }
+}
