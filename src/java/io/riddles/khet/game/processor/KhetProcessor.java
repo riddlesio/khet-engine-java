@@ -98,7 +98,6 @@ public class KhetProcessor extends SimpleProcessor<KhetState, KhetPlayer> {
         movePerformedState.getBoard().dump();
         KhetState temp = createFireLaserState(movePerformedState, player, roundNumber);
         temp.getBoard().dump();
-        System.err.println(temp.getBoard().getLaserPaths() + "\n\n");
         return temp;
     }
 
