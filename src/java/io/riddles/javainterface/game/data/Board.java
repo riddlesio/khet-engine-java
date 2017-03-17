@@ -133,7 +133,5 @@ public abstract class Board<T> {
         return this.height;
     }
 
-    public abstract void clear();
-
     public abstract T fieldFromString(String field);
 }

@@ -25,7 +25,7 @@ sourceSets {
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Riddles.io Lines Of Action Engine',
+        attributes 'Implementation-Title': 'Riddles.io Khet Engine',
                 'Implementation-Version': version,
                 'Main-Class': mainClassName
     }

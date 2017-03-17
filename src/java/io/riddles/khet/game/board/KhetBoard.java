@@ -45,12 +45,6 @@ public class KhetBoard extends Board<KhetPiece> {
     private String[][] boardLayout;  // Contains what the board looks like without pieces, doesn't change
     private ArrayList<ArrayList<Point>> laserPaths;
 
-    public KhetBoard(int width, int height, int playerCount) {
-        super(width, height);
-        initializeBoard(width, height, playerCount);
-        this.clear();
-    }
-
     public KhetBoard(int width, int height, int playerCount, String fieldInput) {
         super(width, height);
         initializeBoard(width, height, playerCount);
@@ -68,15 +62,6 @@ public class KhetBoard extends Board<KhetPiece> {
         this.fields = new KhetPiece[width][height];
         this.boardLayout = new String[width][height];
         this.laserPaths = new ArrayList<>();
-    }
-
-    @Override
-    public void clear() {
-        for (int y = 0; y < this.height; y++) {
-            for (int x = 0; x < this.width; x++) {
-                this.fields[x][y] = null;
-            }
-        }
     }
 
     /**
