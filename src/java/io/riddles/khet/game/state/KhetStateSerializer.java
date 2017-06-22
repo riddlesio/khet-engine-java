@@ -86,4 +86,14 @@ public class KhetStateSerializer extends AbstractStateSerializer<KhetState> {
 
         return stateObj;
     }
+
+    // TODO: move this to javainterface
+    private JSONObject visitPoint(Point point) {
+        JSONObject pointObj = new JSONObject();
+
+        pointObj.put("x", point.x);
+        pointObj.put("y", point.y);
+
+        return pointObj;
+    }
 }

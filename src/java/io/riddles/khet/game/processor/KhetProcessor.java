@@ -95,10 +95,7 @@ public class KhetProcessor extends SimpleProcessor<KhetState, KhetPlayer> {
     private KhetState createNextStateForPlayer(KhetState inputState, KhetPlayer player, int roundNumber) {
         sendUpdatesToPlayer(inputState, player);
         KhetState movePerformedState = createMovePerformedState(inputState, player, roundNumber);
-        movePerformedState.getBoard().dump();
-        KhetState temp = createFireLaserState(movePerformedState, player, roundNumber);
-        temp.getBoard().dump();
-        return temp;
+        return createFireLaserState(movePerformedState, player, roundNumber);
     }
 
     /**
@@ -118,7 +115,8 @@ public class KhetProcessor extends SimpleProcessor<KhetState, KhetPlayer> {
 
         movePerformedState.getBoard().processMove(move, playerId);
 
-        if (move.getException() != null) {
+        if (move.isInvalid()) {
+            player.sendWarning(move.getException().getMessage());
             this.winnerByOpponentError = 2 - (playerId + 1);
         }
 

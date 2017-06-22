@@ -108,6 +108,9 @@ public class KhetBoard extends Board<KhetPiece> {
     }
 
     @Override
+    public void clear() {}
+
+    @Override
     public void setFieldsFromString(String input) {
         String[] split = input.split(",");
         int x = 0;
@@ -171,7 +174,7 @@ public class KhetBoard extends Board<KhetPiece> {
     }
 
     public void processMove(KhetMove move, int playerId) {
-        if (move.getException() != null) return;
+        if (move.isInvalid()) return;
 
         KhetPiece piece;
         try {
@@ -260,12 +263,12 @@ public class KhetBoard extends Board<KhetPiece> {
         Point from = move.getFromCoordinate();
         int opponentId = 2 - (piece.getPlayerId() + 1);
 
-        if (isOutsideBoard(to)) {
-            throw new InvalidMoveException("Can't move a piece outside of the board");
-        }
-
         if (Math.abs(to.x - from.x) > 1 || Math.abs(to.y - from.y) > 1) {
             throw new InvalidMoveException("Piece can only move to a neighboring square");
+        }
+
+        if (isOutsideBoard(to)) {
+            throw new InvalidMoveException("Can't move a piece outside of the board");
         }
 
         if (this.boardLayout[to.x][to.y].equals(opponentId + "")) {

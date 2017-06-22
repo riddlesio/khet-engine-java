@@ -21,6 +21,8 @@ package io.riddles.khet.game.move;
 
 import org.json.JSONObject;
 
+import java.awt.*;
+
 import io.riddles.javainterface.serialize.Serializer;
 
 /**
@@ -30,7 +32,7 @@ import io.riddles.javainterface.serialize.Serializer;
  *
  * @author Jim van Eeden - jim@riddles.io
  */
-public class KhetMoveSerializer extends Serializer<KhetMove> {
+public class KhetMoveSerializer implements Serializer<KhetMove> {
 
     @Override
     public String traverseToString(KhetMove traversible) {
@@ -66,5 +68,15 @@ public class KhetMoveSerializer extends Serializer<KhetMove> {
         }
 
         return moveObj;
+    }
+
+    // TODO: move this to javainterface
+    private JSONObject visitPoint(Point point) {
+        JSONObject pointObj = new JSONObject();
+
+        pointObj.put("x", point.x);
+        pointObj.put("y", point.y);
+
+        return pointObj;
     }
 }
